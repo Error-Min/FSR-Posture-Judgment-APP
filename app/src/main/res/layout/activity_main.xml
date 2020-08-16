@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <!--======블루투스 =====-->
+    <!--======블루투스 =====-->
+    <!--======블루투스 =====-->
+    <Button
+        android:id="@+id/btnBluetoothOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="1dp"
+        android:text="블루투스 ON"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnBluetoothOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="블루투스 OFF"
+        app:layout_constraintStart_toEndOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toTopOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/tvBluetoothStatus"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="216dp"
+        android:layout_marginLeft="216dp"
+        android:layout_marginTop="25dp"
+        android:text="status"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toTopOf="@+id/btnBluetoothOn" />
+
+    <Button
+        android:id="@+id/btnConnect"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="315dp"
+        android:layout_marginLeft="308dp"
+        android:layout_marginTop="1dp"
+        android:text="연결하기"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toTopOf="@+id/btnBluetoothOn" />
+
+
+    <Button
+        android:id="@+id/btnSendData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="전송"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <EditText
+        android:id="@+id/tvSendData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:visibility="gone"
+        android:text="Send Data"
+        app:layout_constraintStart_toEndOf="@+id/btnSendData"
+        app:layout_constraintTop_toTopOf="@+id/btnSendData" />
+    <!--======블루투스 =====-->
+
+    <!--=====타이머 start====-->
+    <TextView
+        android:id="@+id/time_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#cccccc"
+        android:gravity="center"
+        android:text="00:00:00"
+        android:textColor="#777777"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/record"
+        android:layout_width="313dp"
+        android:layout_height="158dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="344dp"
+        android:padding="10dp"
+        android:scrollbars="vertical"
+        android:textSize="20sp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="0px"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_weight="1"
+        android:onClick="myOnClick"
+        android:text="시작"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <Button
+        android:id="@+id/btn_rec"
+        android:layout_width="0px"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="312dp"
+        android:layout_marginLeft="312dp"
+        android:layout_marginTop="4dp"
+        android:layout_weight="1"
+        android:enabled="false"
+        android:onClick="myOnClick"
+        android:text="기록"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <!--=====타이머 end====-->
+
+    <!--=====압력좌표====-->
+    <TextView
+        android:id="@+id/gauge0"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="190dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+    <TextView
+        android:id="@+id/gauge1"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="190dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+    <TextView
+        android:id="@+id/gauge2"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="190dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+    <TextView
+        android:id="@+id/gauge3"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="190dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+    <TextView
+        android:id="@+id/gauge4"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="185dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="190dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+    <TextView
+        android:id="@+id/gauge5"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="113dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="152dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge6"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="126dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="152dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge7"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="152dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge8"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="196dp"
+        android:layout_marginTop="152dp"
+
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge9"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="152dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge10"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="110dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge11"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="171dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="152dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge12"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="110dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge13"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="185dp"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="152dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge14"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="110dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+
+    <TextView
+        android:id="@+id/gauge15"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="197dp"
+        android:layout_marginLeft="196dp"
+        android:layout_marginTop="152dp"
+
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+    <!--android:background="@drawable/table_round_corner" -->
+    <TextView
+        android:id="@+id/gauge16"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="223dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="110dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge17"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="209dp"
+        android:layout_marginLeft="204dp"
+        android:layout_marginTop="152dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge18"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="238dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="110dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge19"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginLeft="228dp"
+        android:layout_marginTop="152dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge20"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="255dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="110dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge21"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="235dp"
+        android:layout_marginLeft="228dp"
+        android:layout_marginTop="152dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge22"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="245dp"
+        android:layout_marginLeft="256dp"
+        android:layout_marginTop="152dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge23"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="257dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="152dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge24"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="270dp"
+        android:layout_marginLeft="304dp"
+        android:layout_marginTop="152dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+
+    <TextView
+        android:id="@+id/gauge25"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="281dp"
+        android:layout_marginLeft="328dp"
+        android:layout_marginTop="152dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge26"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="209dp"
+        android:layout_marginLeft="204dp"
+        android:layout_marginTop="190dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge27"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="223dp"
+        android:layout_marginLeft="204dp"
+        android:layout_marginTop="190dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge28"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="238dp"
+        android:layout_marginLeft="204dp"
+        android:layout_marginTop="190dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge29"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="253dp"
+        android:layout_marginLeft="204dp"
+        android:layout_marginTop="190dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/gauge30"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="270dp"
+        android:layout_marginLeft="204dp"
+        android:layout_marginTop="190dp"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="313dp"
+        android:layout_height="183dp"
+        android:layout_rowSpan="2"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="64dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/xzy"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="255dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="340dp"
+        android:layout_marginEnd="8dp"
+        android:max="10000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.677"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/score_view"
+        android:layout_width="54dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="291dp"
+        android:text="Score"
+        android:gravity="right"
+        android:background="#EEEAEA"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <!--=====압력좌표====-->
+
+
+    <!--=====Right bottom start====-->
+
+    <TextView
+        android:id="@+id/split_text30"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="628dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text29"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="628dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.892"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text28"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="628dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.784"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text27"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="628dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.676"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <!--=====Right bottom end====-->
+    <!--=====Left bottom strt====-->
+
+    <TextView
+        android:id="@+id/split_text26"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="628dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <!--=====Left bottom end====-->
+
+    <TextView
+        android:id="@+id/split_text4"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="628dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.431"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text3"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="628dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text2"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="628dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text1"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="628dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text0"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="628dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text5"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="556dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text6"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="556dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text7"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="556dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text8"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="556dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text9"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="556dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.431"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text11"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="580dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text13"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="580dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text15"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="580dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text17"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="580dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.609"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text19"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="580dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.716"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <!--=====Mid and====-->
+
+    <!--=====Right top start====-->
+
+    <TextView
+        android:id="@+id/split_text21"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="556dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text22"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="556dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.676"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text23"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="556dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.784"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text24"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="556dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.892"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text25"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="556dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <!--=====Right top end====-->
+    <!--=====Lift top start====-->
+
+    <TextView
+        android:id="@+id/split_text20"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="512dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.862"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text18"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="512dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.754"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text16"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="512dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.646"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text10"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="512dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.132"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text12"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="512dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.239"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <TextView
+        android:id="@+id/split_text14"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="512dp"
+        android:background="#EEEAEA"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.347"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
+
+    <!--=====Lift top end====-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
